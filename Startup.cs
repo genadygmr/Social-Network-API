@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
@@ -15,9 +16,9 @@ namespace Social_Network_API
         public void Configuration(IAppBuilder app)
         {
             ConfigureOAuth(app);
+            app.UseCors(CorsOptions.AllowAll);
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
         }
 
