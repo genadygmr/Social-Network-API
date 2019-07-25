@@ -35,6 +35,17 @@ public class AccountController : ApiController
         return Ok();
     }
 
+    [HttpGet]
+    [Authorize]
+    [Route("Login")]
+    public IHttpActionResult Login()
+    {
+
+        // Here should return all data related to the users page.
+        var user =  User.Identity.Name;
+        return Ok(user);
+    }
+
     protected override void Dispose(bool disposing)
     {
         if (disposing)
